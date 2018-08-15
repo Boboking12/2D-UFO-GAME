@@ -62,8 +62,6 @@
     <Compile Include="Assets\Scripts\CompleteCameraController.cs" />
     <Compile Include="Assets\Scripts\CompletePlayerController.cs" />
     <Compile Include="Assets\Scripts\CompleteRotator.cs" />
-    <Compile Include="Assets\TutorialInfo\Scripts\TutorialInfo.cs" />
-    <None Include="Assets\TutorialInfo\Fonts\LICENSE.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/TheSilverFox/Documents/2D UFO GAME/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
