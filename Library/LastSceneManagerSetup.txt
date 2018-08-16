@@ -1,1 +1,4 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/Scenes/A2 2D Top Down.unity
+  isLoaded: 1
+  isActive: 1
