@@ -12,8 +12,10 @@ public class PlayerControl : MonoBehaviour {
 
 	private Rigidbody2D rb2d;		
 	private int count;
-    private Vector3 movement;				
-
+    private Vector3 movement;
+    public GameObject door;
+    public AudioSource audioSource;
+    public AudioClip audio;
 
 	void Start()
 	{
@@ -25,7 +27,7 @@ public class PlayerControl : MonoBehaviour {
 		winText.text = "";
 		
 		SetCountText ();
-	}
+    }
 
 	
 	void FixedUpdate()
@@ -54,14 +56,16 @@ public class PlayerControl : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) 
 	{
 		
-		if (other.gameObject.CompareTag ("PickUp")) 
+		if (other.gameObject.CompareTag ("Keys")) 
 		{		
 			other.gameObject.SetActive(false);
 						
 			count = count + 1;
 						
 			SetCountText ();
-		}
+
+            AudioSource.PlayClipAtPoint(audio, transform.position);
+        }
 		
 
 	}
@@ -72,8 +76,10 @@ public class PlayerControl : MonoBehaviour {
 		
 		countText.text = "Keys Collected: " + count.ToString ();
 
-		
-		if (count >= 12)			
-			winText.text = "You Escaped!";
+
+        if (count >= 3)
+        {
+            door.gameObject.SetActive(false);
+        }
 	}
 }
