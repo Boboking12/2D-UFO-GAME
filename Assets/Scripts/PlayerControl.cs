@@ -11,7 +11,8 @@ public class PlayerControl : MonoBehaviour {
 	public Text winText;			
 
 	private Rigidbody2D rb2d;		
-	private int count;				
+	private int count;
+    private Vector3 movement;				
 
 
 	void Start()
@@ -28,17 +29,28 @@ public class PlayerControl : MonoBehaviour {
 
 	
 	void FixedUpdate()
-	{	
-		float moveHorizontal = Input.GetAxis ("Horizontal");
+	{
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        Move(h, v);
 
-		float moveVertical = Input.GetAxis ("Vertical");
+        //float moveHorizontal = Input.GetAxisRaw ("Horizontal");
+
+		//float moveVertical = Input.GetAxisRaw ("Vertical");
 		
-		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+		//Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 	
-		rb2d.AddForce (movement * speed);
+		//rb2d.AddForce (movement.normalized * speed);
+        
 	}
 
-	
+	void Move(float h, float v)
+    {
+        movement.Set(h, v, 0f);
+        movement = movement.normalized * speed * Time.deltaTime;
+        rb2d.MovePosition(transform.position + movement);
+    }
+
 	void OnTriggerEnter2D(Collider2D other) 
 	{
 		
